@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPARK Grid Tracker: DOE's 31 Transmission Upgrade Selections</title>
+<meta name="description" content="Tracking the 31 projects DOE selected for $1.9 billion in SPARK grid-upgrade funding: who was selected, what they will build, and where each project stands.">
+<meta property="og:title" content="SPARK Grid Tracker: DOE's 31 Transmission Upgrade Selections">
+<meta property="og:description" content="Who DOE selected for $1.9 billion in grid-upgrade funding, what they will build, and where each project stands.">
+<meta property="og:image" content="https://jphoebus.github.io/spark-grid-tracker/spark-preview.png">
+<meta property="og:url" content="https://jphoebus.github.io/spark-grid-tracker/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --limestone: #EDF0F1;
+    --paper: #FFFFFF;
+    --ink: #1B2631;
+    --slate: #52606D;
+    --rule: #CBD2D9;
+    --accent: #1F5C4A;
+    --accent-soft: #DCEBE5;
+    --font: "Public Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--limestone);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.55;
+  }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .measure { max-width: 68ch; }
+
+  /* Header */
+  header { padding: 64px 0 40px; }
+  h1 {
+    font-size: clamp(2rem, 4.6vw, 3.4rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 20px;
+    max-width: 18ch;
+  }
+  .lede { font-size: 1.15rem; color: var(--slate); margin: 0; }
+
+  /* Where each state stands */
+  .standing {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    border-top: 3px solid var(--ink);
+    margin-top: 40px;
+  }
+  .standing div {
+    padding: 16px 16px 20px 0;
+    border-right: 1px solid var(--rule);
+    padding-left: 16px;
+  }
+  .standing div:first-child { padding-left: 0; }
+  .standing div:last-child { border-right: 0; }
+  .standing strong { display: block; font-size: 1.25rem; font-weight: 700; }
+  .standing span { display: block; color: var(--slate); font-size: 0.95rem; }
+  .standing time { display: block; font-size: 0.85rem; color: var(--accent); font-weight: 600; margin-top: 6px; }
+
+  /* Comparison */
+  section { padding: 48px 0; }
+  h2 { font-size: 1.6rem; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 12px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 20px; align-items: center; }
+  .filters p { margin: 0 8px 0 0; color: var(--slate); font-size: 0.95rem; }
+  .chip {
+    font: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border: 1.5px solid var(--accent);
+    border-radius: 999px;
+    background: var(--accent);
+    color: #fff;
+    cursor: pointer;
+  }
+  .chip[aria-pressed="false"] { background: transparent; color: var(--accent); }
+  .table-scroll {
+    overflow-x: auto;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+  }
+  table { border-collapse: collapse; width: 100%; min-width: 760px; font-size: 0.92rem; }
+  th, td { text-align: left; vertical-align: top; padding: 12px 14px; border-bottom: 1px solid var(--rule); }
+  thead th {
+    font-size: 1rem;
+    font-weight: 700;
+    border-bottom: 2px solid var(--ink);
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+  }
+  tbody th {
+    font-weight: 600;
+    color: var(--slate);
+    width: 170px;
+    position: sticky;
+    left: 0;
+    background: var(--paper);
+  }
+  tr.group th {
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  [hidden] { display: none !important; }
+  td.empty { color: var(--slate); font-style: italic; }
+  td.sources a { display: block; word-break: break-word; margin-bottom: 4px; }
+  .status-msg { padding: 24px; color: var(--slate); }
+
+  /* Analysis */
+  .analysis { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .analysis h3 { font-size: 1.1rem; font-weight: 700; margin: 24px 0 4px; }
+  .analysis p { margin: 0; }
+  .question {
+    margin-top: 32px;
+    padding-left: 20px;
+    border-left: 4px solid var(--accent);
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  ul.watch { padding-left: 1.1em; margin: 12px 0 0; }
+  ul.watch li { margin-bottom: 10px; }
+
+  footer { border-top: 1px solid var(--rule); padding: 40px 0 64px; color: var(--slate); font-size: 0.95rem; }
+  footer p { margin: 0 0 12px; }
+
+  @media (max-width: 800px) {
+    .standing { grid-template-columns: 1fr 1fr; }
+    .standing div { border-right: 0; border-bottom: 1px solid var(--rule); padding-left: 0; }
+    .analysis { grid-template-columns: 1fr; gap: 16px; }
+    header { padding-top: 40px; }
+  }
+  @media print {
+    .filters { display: none; }
+    body { background: #fff; }
+    .table-scroll { overflow: visible; border: 0; }
+    thead th, tbody th { position: static; }
+  }
+  .standing div { border-bottom: 1px solid var(--rule); }
+  .chip.group-chip { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .chip.group-chip[aria-pressed="true"] { background: var(--ink); color: #fff; }
+  .method { margin-top: 20px; color: var(--slate); font-size: 0.95rem; }
+  table { min-width: 1300px; }
+  td.num, th.num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .stat strong { font-size: 1.9rem; font-weight: 800; }
+  .note { color: var(--slate); font-size: 0.9rem; margin-top: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <h1>DOE's SPARK grid selections, tracked</h1>
+    <p class="lede measure">The 31 transmission projects the Department of Energy selected in September 2026 to speed grid connections by getting more capacity out of existing lines: who was selected, what they plan to build, and where each project stands.</p>
+    <p class="method measure">Built from DOE's published list of selected applications. Amounts are requested, not awarded; DOE expects to finalize agreements between October 2026 and January 2027, and details may change.</p>
+    <div class="standing" aria-label="Key figures">
+      <div class="stat"><strong>31</strong><span>projects selected</span></div>
+      <div class="stat"><strong>$1.89B</strong><span>federal funds requested</span></div>
+      <div class="stat"><strong>$5.25B</strong><span>total project value, with utility cost share</span></div>
+      <div class="stat"><strong>4</strong><span>projects led by state governments</span></div>
+      <div class="stat"><strong>7</strong><span>descriptions that mention data centers or large loads</span></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section id="projects">
+    <div class="wrap">
+      <h2>The 31 selections</h2>
+      <p class="measure">Filter by topic area, by projects that mention data centers or large loads, or by Pennsylvania. The table scrolls sideways.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filter projects"><p>Show:</p><button class="chip" type="button" aria-pressed="true" data-f="all">All 31</button><button class="chip" type="button" aria-pressed="false" data-f="1">Topic 1: Grid resilience</button><button class="chip" type="button" aria-pressed="false" data-f="2">Topic 2: Smart grid</button><button class="chip" type="button" aria-pressed="false" data-f="3">Topic 3: State-led</button><button class="chip" type="button" aria-pressed="false" data-f="ll">Mentions large loads</button><button class="chip" type="button" aria-pressed="false" data-f="pa">Pennsylvania</button></div>
+      <div class="table-scroll" tabindex="0" aria-label="SPARK selections table">
+        <table id="table">
+<thead><tr><th scope="col">Prime applicant</th><th scope="col">Project</th><th scope="col">Topic area</th><th scope="col">Headquarters</th><th scope="col">States named in description</th><th scope="col" class="num">Federal request</th><th scope="col" class="num">Total value</th><th scope="col" class="num">Cost share</th><th scope="col">Technologies described</th><th scope="col">Data center or large-load mention</th></tr></thead><tbody><tr data-topic="1" data-ll="no" data-pa="no"><th scope="row">Arizona Electric Power Cooperative, Inc.</th><td>Accelerated Advanced Reconductoring</td><td>1: Grid Resilience (small utilities)</td><td>Benson, AZ</td><td>Arizona</td><td class="num">$29.1M</td><td class="num">$38.9M</td><td class="num">25%</td><td>Line replacement; substation upgrades</td><td>Not stated</td></tr>
+<tr data-topic="1" data-ll="no" data-pa="no"><th scope="row">Farmers&#x27; Electric Cooperative, Inc. of New Mexico</th><td>Eastern New Mexico Capacity Expansion for Energy Project</td><td>1: Grid Resilience (small utilities)</td><td>Clovis, NM</td><td>Not specified</td><td class="num">$19.5M</td><td class="num">$26.0M</td><td class="num">25%</td><td>Line replacement; wood-to-steel structures; communications and controls</td><td>Demand growth cited</td></tr>
+<tr data-topic="1" data-ll="no" data-pa="no"><th scope="row">Four County Electric Membership Corporation</th><td>Line Infrastructure for Tomorrow (LIFT)</td><td>1: Grid Resilience (small utilities)</td><td>Burgaw, NC</td><td>Not specified</td><td class="num">$23.2M</td><td class="num">$31.0M</td><td class="num">25%</td><td>Line and substation upgrades; wood-to-steel structures</td><td>Demand growth cited</td></tr>
+<tr data-topic="1" data-ll="no" data-pa="no"><th scope="row">Kit Carson Electric Cooperative, Inc.</th><td>Accelerated Reconductoring and Dynamic Line Rating, Questa-Taos 69kV Corridor</td><td>1: Grid Resilience (small utilities)</td><td>Taos, NM</td><td>New Mexico</td><td class="num">$38.1M</td><td class="num">$50.8M</td><td class="num">25%</td><td>Reconductoring; dynamic line rating</td><td>Not stated</td></tr>
+<tr data-topic="1" data-ll="no" data-pa="no"><th scope="row">Basin Electric Power Cooperative</th><td>Unified Vision for Energy Resilience</td><td>1: Grid Resilience (large utilities)</td><td>Bismarck, ND</td><td>Arkansas; Florida; Missouri; Mississippi; North Dakota; Wisconsin</td><td class="num">$87.3M</td><td class="num">$174.7M</td><td class="num">50%</td><td>Five corridor upgrade subprojects</td><td>Not stated</td></tr>
+<tr data-topic="1" data-ll="no" data-pa="yes"><th scope="row">PPL Electric Utilities Corporation</th><td>Montour Advanced Reconductoring Project</td><td>1: Grid Resilience (large utilities)</td><td>Allentown, PA</td><td>Pennsylvania</td><td class="num">$71.5M</td><td class="num">$142.9M</td><td class="num">50%</td><td>Rebuild of existing Montour-Glen Brook-Susquehanna corridor</td><td>Not stated</td></tr>
+<tr data-topic="1" data-ll="no" data-pa="no"><th scope="row">Puget Sound Energy, Inc.</th><td>Project Pulse</td><td>1: Grid Resilience (large utilities)</td><td>Bellevue, WA</td><td>Not specified</td><td class="num">$40.2M</td><td class="num">$80.4M</td><td class="num">50%</td><td>Existing line upgrades</td><td>Not stated</td></tr>
+<tr data-topic="1" data-ll="no" data-pa="no"><th scope="row">Rocky Mountain Power</th><td>UNLOCK (Upgrading Network Lines for Optimized Capacity and Knowledge)</td><td>1: Grid Resilience (large utilities)</td><td>Salt Lake City, UT</td><td>Utah; Idaho; Wyoming</td><td class="num">$87.5M</td><td class="num">$175.1M</td><td class="num">50%</td><td>Line upgrades; line rating technology</td><td>Not stated</td></tr>
+<tr data-topic="1" data-ll="no" data-pa="no"><th scope="row">Tennessee Valley Authority</th><td>Rebuilding the Transmission Backbone for Energy and AI Dominance</td><td>1: Grid Resilience (large utilities)</td><td>Knoxville, TN</td><td>Not specified</td><td class="num">$79.8M</td><td class="num">$159.7M</td><td class="num">50%</td><td>Line upgrades; line rating technology</td><td>Regional growth cited</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">1803 Electric Cooperative, Inc.</th><td>1803 Integrated Smart Grid Program</td><td>2: Smart Grid</td><td>Baton Rouge, LA</td><td>Louisiana</td><td class="num">$21.1M</td><td class="num">$42.3M</td><td class="num">50%</td><td>Advanced modeling; optimization; wire replacement; monitoring and control</td><td>Load growth cited</td></tr>
+<tr data-topic="2" data-ll="yes" data-pa="no"><th scope="row">Alabama Power Company</th><td>Northeast Alabama Smart Grid Deployment</td><td>2: Smart Grid</td><td>Birmingham, AL</td><td>Alabama</td><td class="num">$50.0M</td><td class="num">$183.9M</td><td class="num">73%</td><td>Line upgrades; advanced transmission technologies</td><td>Yes: data centers named</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">American Electric Power Service Corporation</th><td>Next-Generation Optical Transport Network for Smart Grid Modernization</td><td>2: Smart Grid</td><td>Columbus, OH</td><td>Not specified</td><td class="num">$50.0M</td><td class="num">$151.7M</td><td class="num">67%</td><td>Communications network; capacity rating system</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">CenterPoint Energy Houston Electric, LLC</th><td>Project TALON (Transmission Area Load Optimization Node)</td><td>2: Smart Grid</td><td>Houston, TX</td><td>Not specified</td><td class="num">$50.0M</td><td class="num">$176.7M</td><td class="num">72%</td><td>System stabilization device</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">Duke Energy Carolinas, LLC</th><td>UNLOCK Carolinas</td><td>2: Smart Grid</td><td>Charlotte, NC</td><td>Not specified</td><td class="num">$50.0M</td><td class="num">$201.4M</td><td class="num">75%</td><td>Advanced transmission technologies; line upgrades</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="yes" data-pa="yes"><th scope="row">Duquesne Light Company</th><td>GRID-SURGE</td><td>2: Smart Grid</td><td>Pittsburgh, PA</td><td>Not specified</td><td class="num">$22.2M</td><td class="num">$44.9M</td><td class="num">51%</td><td>Stabilization devices; line upgrades</td><td>Yes: new customer interconnection</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">Electric Power Research Institute, Inc.</th><td>ATREES: Advanced Transmission Technologies for Reliable and Efficient Energy Supply</td><td>2: Smart Grid</td><td>Palo Alto, CA</td><td>Not specified (FirstEnergy and Salt River Project systems)</td><td class="num">$20.9M</td><td class="num">$41.7M</td><td class="num">50%</td><td>Advanced transmission technologies</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="yes" data-pa="no"><th scope="row">Entergy Mississippi, LLC</th><td>Unlocking Grid Capacity for the Southeast&#x27;s Next Wave of Data Center and Industrial Growth</td><td>2: Smart Grid</td><td>Jackson, MS</td><td>Arkansas; Louisiana; Mississippi</td><td class="num">$13.7M</td><td class="num">$27.4M</td><td class="num">50%</td><td>Line rating technology; substation upgrades; monitoring and controls</td><td>Yes: data centers named</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">Eversource Energy Service Corporation</th><td>Dynamic Rating Enhancement Advancements and Modernization</td><td>2: Smart Grid</td><td>Hartford, CT</td><td>Connecticut; Massachusetts; New Hampshire</td><td class="num">$47.7M</td><td class="num">$95.5M</td><td class="num">50%</td><td>Line rating system; data analytics</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">Guam Power Authority</th><td>Guam Real-Time Intelligence for Transmission (GRIT)</td><td>2: Smart Grid</td><td>Mangilao, GU</td><td>Guam</td><td class="num">$10.6M</td><td class="num">$21.2M</td><td class="num">50%</td><td>Undergrounding; monitoring and automation; AI tools</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">Orlando Utilities Commission</th><td>Improving Transmission Operations at OUC through Demonstration of Advanced Transmission Technologies</td><td>2: Smart Grid</td><td>Orlando, FL</td><td>Not specified</td><td class="num">$13.0M</td><td class="num">$25.9M</td><td class="num">50%</td><td>High-temperature low-sag conductors; dynamic line rating; AI tools</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">New England Power Company</th><td>Dynamic Rating Enhancement Advancements and Modernization</td><td>2: Smart Grid</td><td>Waltham, MA</td><td>Not specified</td><td class="num">$49.7M</td><td class="num">$99.7M</td><td class="num">50%</td><td>Real-time rating tool; operations software; field sensors</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">New York Power Authority</th><td>Marcy STATCOM PowerBoost</td><td>2: Smart Grid</td><td>White Plains, NY</td><td>Not specified</td><td class="num">$50.0M</td><td class="num">$270.0M</td><td class="num">81%</td><td>Equipment replacement with advanced transmission technology</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">NorthWestern Energy</th><td>Enhancing Inter-State Transfer Capability Between Montana and Wyoming</td><td>2: Smart Grid</td><td>Butte, MT</td><td>Montana; Wyoming</td><td class="num">$26.5M</td><td class="num">$53.0M</td><td class="num">50%</td><td>Power flow control; dynamic line rating</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="yes" data-pa="no"><th scope="row">Pacific Power</th><td>CASCADE (Coordinated Advanced Smart-grid Control and Dynamic Enablement)</td><td>2: Smart Grid</td><td>Portland, OR</td><td>Washington; Oregon</td><td class="num">$50.0M</td><td class="num">$105.5M</td><td class="num">53%</td><td>Advanced transmission technologies at substations</td><td>Yes: large-load interconnection</td></tr>
+<tr data-topic="2" data-ll="yes" data-pa="no"><th scope="row">Pitch Aeronautics Inc.</th><td>Weather-Centric Dynamic Line Ratings and Targeted Reconductoring</td><td>2: Smart Grid</td><td>Boise, ID</td><td>Not specified (Ameren Missouri, Ameren Illinois, Farmington Electric Utility System)</td><td class="num">$37.0M</td><td class="num">$75.6M</td><td class="num">51%</td><td>Weather-based line rating; targeted reconductoring</td><td>Yes: large-load interconnection</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">Powder River Energy Corporation</th><td>PRISM (PRECorp Resilient Infrastructure and Smart-grid Modernization)</td><td>2: Smart Grid</td><td>Sundance, WY</td><td>Not specified</td><td class="num">$14.7M</td><td class="num">$29.8M</td><td class="num">51%</td><td>Line upgrades; sensors; automation; AI models</td><td>Not stated</td></tr>
+<tr data-topic="2" data-ll="no" data-pa="no"><th scope="row">Public Service Company of New Mexico</th><td>ORBIT (Operational Resilience and Balanced Intelligent Transmission)</td><td>2: Smart Grid</td><td>Albuquerque, NM</td><td>Not specified</td><td class="num">$29.4M</td><td class="num">$65.8M</td><td class="num">55%</td><td>Line upgrades; line rating software; structure upgrades</td><td>Not stated</td></tr>
+<tr data-topic="3" data-ll="no" data-pa="no"><th scope="row">Colorado Energy Office</th><td>CO to TX Western-Eastern Intertie Modernization Initiative</td><td>3: Grid Innovation (states and localities)</td><td>Denver, CO</td><td>Colorado; Texas; neighboring regions</td><td class="num">$250.0M</td><td class="num">$1,206.6M</td><td class="num">79%</td><td>Advanced transmission technologies; targeted line upgrades</td><td>Not stated</td></tr>
+<tr data-topic="3" data-ll="no" data-pa="no"><th scope="row">Oklahoma Office of Management and Enterprise Services</th><td>Three Corners Connector</td><td>3: Grid Innovation (states and localities)</td><td>Oklahoma City, OK</td><td>Oklahoma; Colorado</td><td class="num">$250.0M</td><td class="num">$832.2M</td><td class="num">70%</td><td>High-capacity link between SPP and WECC</td><td>Not stated</td></tr>
+<tr data-topic="3" data-ll="yes" data-pa="no"><th scope="row">Public Utilities Commission of Ohio</th><td>Ohio SPARK</td><td>3: Grid Innovation (states and localities)</td><td>Columbus, OH</td><td>Ohio</td><td class="num">$136.0M</td><td class="num">$273.0M</td><td class="num">50%</td><td>Advanced transmission technologies; line upgrades</td><td>Yes: new load interconnection</td></tr>
+<tr data-topic="3" data-ll="yes" data-pa="no"><th scope="row">State of Indiana, Office of Energy Development</th><td>Expanding Cross-Regional Transfer Capability Across the PJM-MISO Seam</td><td>3: Grid Innovation (states and localities)</td><td>Indianapolis, IN</td><td>Indiana</td><td class="num">$174.4M</td><td class="num">$348.8M</td><td class="num">50%</td><td>Reconductoring; advanced transmission technologies</td><td>Yes: large-load interconnection</td></tr></tbody>
+        </table>
+      </div>
+      <p class="note measure">"Headquarters" is the prime applicant's location as DOE lists it, which is not always where the work happens. "Not specified" means DOE's summary did not name states. Descriptions condense DOE's project summaries. Status for all 31: selected September 2026, award expected October 2026 to January 2027. Source: <a href="https://www.energy.gov/documents/selected-applications-de-foa-003580-spark">DOE, Selected Applications for DE-FOA-0003580 (SPARK)</a>.</p>
+    </div>
+  </section>
+
+  <section id="analysis">
+    <div class="wrap">
+      <div class="analysis">
+        <div>
+          <h2>What stands out</h2>
+          <h3>Headquarters are not project sites</h3>
+          <p>The 26 locations in DOE's list are where prime applicants are based, including Guam and California, where EPRI is headquartered even though its project runs on FirstEnergy and Salt River Project systems. Several projects cross state lines; Basin Electric's covers six states.</p>
+          <h3>The data center story is narrower than the headlines</h3>
+          <p>Seven of the 31 project descriptions mention data centers or large loads. Most describe congestion, reliability, and aging infrastructure. Large loads are driving the urgency, but much of the work serves the whole system.</p>
+          <h3>States are applicants, not just regulators</h3>
+          <p>Four state-led projects in Colorado, Oklahoma, Ohio, and Indiana request $810 million, 43 percent of all federal funds. One of them is led by Ohio's utility commission.</p>
+          <h3>Utilities are bringing more than the minimum</h3>
+          <p>Six smart grid projects request exactly $50 million in federal funds, and several put in far more of their own. Alabama Power's cost share is 73 percent; the New York Power Authority's is 81 percent.</p>
+        </div>
+        <div>
+          <h2>What to watch</h2>
+          <ul class="watch">
+            <li>Selections become signed awards between October 2026 and January 2027. Final amounts may differ from these requests.</li>
+            <li>How each project's cost share is recovered: through federally regulated transmission rates, state-regulated retail rates, or cooperative and public power boards.</li>
+            <li>Pennsylvania's two projects: PPL's Montour corridor rebuild and Duquesne Light's GRID-SURGE interconnection upgrades.</li>
+            <li>How the four state-led projects coordinate work across multiple utilities and grid regions.</li>
+          </ul>
+          <p class="question">The question that will shape the next phase: who gets the capacity these upgrades unlock, the large loads driving demand or the customers paying for congestion today, and who decides.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap measure">
+    <p>Compiled by Joshua Phoebus, former Director of Performance and Transformation in the Office of Pennsylvania Governor Tom Wolf. <a href="https://www.linkedin.com/in/joshuaphoebus">LinkedIn</a> · <a href="https://www.joshuaphoebusllc.com">Website</a></p>
+    <p>Related: <a href="https://jphoebus.github.io/state-incentive-comparison/">State data center incentives, compared</a> · <a href="https://jphoebus.github.io/tax-incentive-evaluation/">How states check their tax incentives</a></p>
+    <p>The underlying data is in <a href="spark-selections.csv">spark-selections.csv</a>. This tracker is for policy analysis and is not investment, tax, or legal advice.</p>
+  </div>
+</footer>
+
+<script>
+  // Filter buttons show or hide rows. The table is plain HTML, so it displays even if this script never runs.
+  var chips = document.querySelectorAll("#filters .chip");
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      chips.forEach(function (x) { x.setAttribute("aria-pressed", x === c ? "true" : "false"); });
+      var f = c.dataset.f;
+      document.querySelectorAll("#table tbody tr").forEach(function (r) {
+        var show = f === "all" || r.dataset.topic === f || (f === "ll" && r.dataset.ll === "yes") || (f === "pa" && r.dataset.pa === "yes");
+        r.hidden = !show;
+      });
+    });
+  });
+</script>
+</body>
+</html>
