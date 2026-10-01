@@ -30,6 +30,7 @@ The full list is in [spark-selections.csv](spark-selections.csv), with one row p
 
 ## Related projects
 
+- [What states changed on data centers in 2026](https://jphoebus.github.io/data-center-legislation-2026/)
 - [State data center incentives, compared](https://jphoebus.github.io/state-incentive-comparison/)
 - [How states check their tax incentives](https://jphoebus.github.io/tax-incentive-evaluation/)
 
