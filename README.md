@@ -34,6 +34,7 @@ The full list is in [spark-selections.csv](spark-selections.csv), with one row p
 - [State data center incentives, compared](https://jphoebus.github.io/state-incentive-comparison/)
 - [What counts as exempt data center equipment](https://jphoebus.github.io/data-center-exempt-equipment/)
 - [How states check their tax incentives](https://jphoebus.github.io/tax-incentive-evaluation/)
+- [Who pays for data center power](https://jphoebus.github.io/large-load-tariffs/)
 
 ## About me
 
