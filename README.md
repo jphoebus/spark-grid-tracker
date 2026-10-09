@@ -35,6 +35,7 @@ The full list is in [spark-selections.csv](spark-selections.csv), with one row p
 - [What counts as exempt data center equipment](https://jphoebus.github.io/data-center-exempt-equipment/)
 - [How states check their tax incentives](https://jphoebus.github.io/tax-incentive-evaluation/)
 - [Who pays for data center power](https://jphoebus.github.io/large-load-tariffs/)
+- [Which data center load counts](https://jphoebus.github.io/large-load-screening/)
 - [Are state rules ready for quantum computing?](https://jphoebus.github.io/quantum-readiness/)
 
 ## About me
