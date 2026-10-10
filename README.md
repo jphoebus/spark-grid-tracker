@@ -4,6 +4,8 @@ Tracking the 31 projects the U.S. Department of Energy selected in September 202
 
 **Interactive version:** [jphoebus.github.io/spark-grid-tracker](https://jphoebus.github.io/spark-grid-tracker/)
 
+**All projects:** [jphoebus.github.io](https://jphoebus.github.io/)
+
 ## Why this tracker
 
 SPARK funds upgrades to existing transmission lines, through reconductoring and grid-enhancing technologies, to connect new demand faster than new corridors can be built. DOE selected 31 projects requesting $1.89 billion in federal funds, with $5.25 billion in total project value once utility cost share is included. These are selections, not final awards. DOE expects to sign agreements between October 2026 and January 2027, and this tracker will follow each project from selection to award.
