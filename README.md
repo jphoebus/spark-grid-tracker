@@ -12,7 +12,7 @@ SPARK funds upgrades to existing transmission lines, through reconductoring and 
 
 ## What stands out
 
-- **Headquarters are not project sites.** The 26 locations in DOE's list are where prime applicants are based, including Guam and California, where EPRI is headquartered even though its project runs on FirstEnergy and Salt River Project systems. Several projects cross state lines; Basin Electric's covers six states.
+- **Headquarters are not project sites.** The 26 states and territories in DOE's list are where prime applicants are based, including Guam and California, where EPRI is headquartered even though its project runs on FirstEnergy and Salt River Project systems. Several projects cross state lines; Basin Electric's covers six states.
 - **The data center story is narrower than the headlines.** Seven of the 31 project descriptions cite data centers, large loads, or new load, and only two name data centers directly. Most describe congestion, reliability, and aging infrastructure.
 - **States are applicants, not just regulators.** Four state-led projects in Colorado, Oklahoma, Ohio, and Indiana request $810 million, 43 percent of all federal funds. One is led by Ohio's utility commission.
 - **Utilities are bringing more than the minimum.** Six smart grid projects request exactly $50 million in federal funds, and several put in far more of their own. Alabama Power's cost share is 73 percent; the New York Power Authority's is 81 percent.
